@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%93%8D%3C/text%3E%3C/svg%3E">
+<title>Travel With Me</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="trow">
+      <div class="brand"><svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true"><rect width="42" height="42" rx="12" fill="#2a7fe0"/><path d="M21 8c-5 0-9 3.800-9 8.700 0 6.300 9 16.300 9 16.300s9-10 9-16.300C30 11.800 26 8 21 8z" fill="#ef4444"/><circle cx="21" cy="16.700" r="3.500" fill="#fff"/></svg><div><b>Travel With Me</b><span>Открой Кыргызстан. Собери своё путешествие.</span></div></div>
+      <div class="lang" role="group" aria-label="Language"><button class="chip" data-l="ru" aria-pressed="true">RU</button><button class="chip" data-l="en" aria-pressed="false">EN</button></div>
+    </div>
+    <input id="q" class="search" type="search" placeholder="Поиск мест в Кыргызстане…" aria-label="Поиск">
+  </header>
+
+  <section class="pane" data-tab="home">
+    <h3>Популярные места</h3>
+    <div class="hs" id="pop"></div>
+    <div class="chips" id="rchips" role="group" aria-label="Области"></div>
+    <div class="chips" id="chips" role="group" aria-label="Фильтр"></div>
+    <h3>Все места</h3>
+    <p class="hint" id="note" hidden>Descriptions, history and route plans are in Russian for now.</p>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section class="pane" data-tab="map" hidden>
+    <div class="map"><svg id="svg" viewBox="0 0 1110 567" role="img" aria-label="Схематичная карта Кыргызстана"></svg></div>
+    <p class="hint">Красный пунктир: место, которого нет на популярных картах. Рисунок вместо фото: добавьте свои снимки к месту. Карта схематичная, координаты ориентировочные: перед публикацией места нужно проверить.</p>
+    <div class="detail" id="detail"></div>
+    <h3>Добавить своё место</h3>
+    <form id="form">
+      <p class="hint" style="margin:0">Нажмите на карту, чтобы выбрать точку, или введите координаты.</p>
+      <label>Название<input id="fname" required placeholder="Например, озеро у перевала"></label>
+      <div class="row">
+        <label>Широта<input id="flat" required inputmode="decimal" placeholder="42.50"></label>
+        <label>Долгота<input id="flon" required inputmode="decimal" placeholder="77.10"></label>
+      </div>
+      <label>Область<select id="freg"></select></label>
+      <label>Категория<select id="fcat"></select></label>
+      <label>Описание<textarea id="fdesc" rows="3" placeholder="Как добраться, что важно знать"></textarea></label>
+      <button class="btn" type="submit">Добавить место</button>
+      <div class="msg" id="msg" role="status"></div>
+    </form>
+  </section>
+
+  <section class="pane" data-tab="fav" hidden>
+    <h3>Избранное</h3>
+    <div id="favlist"></div>
+  </section>
+
+  <section class="pane" data-tab="routes" hidden>
+    <h3>Готовые маршруты</h3>
+    <div class="chips" id="routes" role="group" aria-label="Маршруты"></div>
+    <div class="detail" id="route" hidden></div>
+    <h3>Построить свою поездку</h3>
+    <div class="detail" id="planner"></div>
+    <div class="detail" id="planres"></div>
+    <div class="detail" id="book" hidden></div>
+  </section>
+
+  <section class="pane" data-tab="me" hidden>
+    <h3>Помощь и чат поддержки</h3>
+    <div class="detail" id="support"></div>
+    <h3>Связь и сотрудничество</h3>
+    <div class="detail ct">
+      <p class="hint" style="margin:0">Автор проекта</p>
+      <h2>Турганбеков Рамазан</h2>
+      <p class="hint">По вопросам сотрудничества и развития проекта</p>
+      <a href="tel:+996705017008">+996 705 017 008</a>
+      <a href="tel:+996999017008">+996 999 017 008</a>
+      <a class="btn" style="text-align:center;text-decoration:none;display:block;margin-top:8px;color:#fff" href="https://wa.me/996705017008" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    </div>
+  </section>
+</div>
+<nav class="nav" id="nav" aria-label="Навигация">
+  <button data-t="home" aria-pressed="true"><svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/></svg>Главная</button>
+  <button data-t="map" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 21s-6-6-6-11a6 6 0 0112 0c0 5-6 11-6 11z"/><circle cx="12" cy="10" r="2"/></svg>Карта</button>
+  <button data-t="fav" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.500-7-10a4 4 0 017-2.500A4 4 0 0119 10c0 5.500-7 10-7 10z"/></svg>Избранное</button>
+  <button data-t="routes" aria-pressed="false"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18h6a3 3 0 000-6h-4a3 3 0 010-6h6"/></svg>Маршруты</button>
+  <button data-t="me" aria-pressed="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>Профиль</button>
+</nav>
+<script src="photos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
